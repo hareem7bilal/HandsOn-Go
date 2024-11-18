@@ -13,8 +13,16 @@ func (p person) fullName() string {
 	return p.first + " " + p.last
 }
 
+func (a author) fullName() string {
+	return fmt.Sprintf("%s (%s)", a.person.fullName(), a.penName)
+}
+
 // define author and embed person
-//
+type author struct {
+	person
+	penName string
+
+}
 
 // override fullName method for author
 //
@@ -28,5 +36,14 @@ func main() {
 	fmt.Println(p.fullName())
 
 	// initialize and print an author's full name
-	//
+	a:= author{
+		person: person{
+			first: "James",
+			last: "Baldwin",
+		},
+		penName: "Jimmy",
+
+	}
+
+	fmt.Println(a.fullName())
 }
