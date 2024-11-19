@@ -17,3 +17,8 @@ func main() {
 	two := specialInt(2)
 	fmt.Println(sum(one, two))
 }
+
+type list[T any] struct {
+	next *list[T]
+	val  T
+}
